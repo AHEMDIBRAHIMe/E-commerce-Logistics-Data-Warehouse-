@@ -1,0 +1,14 @@
+# Python and Data files
+*.csv
+__pycache__/
+*.pyc
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store

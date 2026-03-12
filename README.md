@@ -4,6 +4,39 @@
 هذا المشروع يبرز كيفية تصميم وبناء مستودع بيانات كامل (Data Warehouse) لتطبيق تجارة إلكترونية شامل (Super-app)، مع التركيز على العمليات اللوجستية، إدارة المبيعات، وتحليل أداء التوصيل.
 
 ## الفكرة المعمارية (Architecture)
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef generator fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef storage fill:#ff9,stroke:#333,stroke-width:2px;
+    classDef warehouse fill:#9cf,stroke:#333,stroke-width:2px;
+    classDef dbt fill:#f96,stroke:#333,stroke-width:2px;
+    classDef bi fill:#ccf,stroke:#333,stroke-width:2px;
+
+    %% Nodes
+    A[Python Faker Script<br/>Mock Data Generation]:::generator
+    
+    subgraph Data Lake
+        B[(Amazon S3 / GCS<br/>Raw CSV Files)]:::storage
+    end
+    
+    subgraph Data Warehouse
+        C[(Snowflake / Redshift<br/>Staging Tables)]:::warehouse
+        D{{dbt<br/>Data Transformation}}:::dbt
+        E[(Marts / Fact & Dim Tables)]:::warehouse
+    end
+    
+    F[BI Tools: Tableau / PowerBI<br/>SQL Analytics]:::bi
+
+    %% Edges
+    A -- Generates Users, Orders,<br/>Couriers, Deliveries --> B
+    B -- Copy / Load Data --> C
+    C -- Raw Data --> D
+    D -- Cleans, Calculates SLAs,<br/>Builds Models --> E
+    E -- Analyzes Delivery Times<br/>& Peak Hours --> F
+```
+
 1. **Mock Data Generation**: سكريبت بايثون `data_generator.py` يقوم بتوليد مئات الآلاف من السجلات الوهمية للعملاء، المناديب، الطلبات، وعمليات التوصيل.
 2. **Data Lake (S3 / GCS)**: تُحفظ البيانات الخام (Raw CSVs) الناتجة من السكريبت في Amazon S3 أو Google Cloud Storage.
 3. **Data Warehouse (Snowflake / Redshift)**: يتم تحميل البيانات من S3 إلى جداول مؤقتة (Staging).

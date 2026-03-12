@@ -14,20 +14,20 @@ graph TD
     classDef dbt fill:#f96,stroke:#333,stroke-width:2px;
     classDef bi fill:#ccf,stroke:#333,stroke-width:2px;
 
-    %% Nodes
-    A[<img src='https://cdn.iconscout.com/icon/free/png-256/python-2-226051.png' width='30' align='center'/> <br/> <b>Python Script</b> <br/> Mock Data Generation]:::generator
+    %% Nodes using SVG and Emoji as GitHub Mermaid blocks img tags
+    A[🤖 Python Script<br/>Mock Data Generation]:::generator
     
     subgraph Data Lake
-        B[<img src='https://cdn.iconscout.com/icon/free/png-256/amazon-s3-1-1175239.png' width='40' align='center'/> <br/> <b>S3 / GCS</b> <br/> Raw CSV Files]:::storage
+        B[(☁️ S3 / GCS<br/>Raw CSV Files)]:::storage
     end
     
     subgraph Data Warehouse
-        C[<img src='https://cdn.iconscout.com/icon/free/png-256/snowflake-1-1175240.png' width='40' align='center'/> <br/> <b>Snowflake/Redshift</b> <br/> Staging Tables]:::warehouse
-        D{{ <img src='https://docs.getdbt.com/img/dbt-logo-full-white.png' width='50' align='center'/> <br/> <b>dbt Transformation</b> }}:::dbt
-        E[<img src='https://cdn-icons-png.flaticon.com/512/3233/3233483.png' width='30' align='center'/> <br/> <b>Data Marts</b> <br/> Fact & Dim Tables]:::warehouse
+        C[(❄️ Snowflake/Redshift<br/>Staging Tables)]:::warehouse
+        D{{🔄 dbt<br/>Data Transformation}}:::dbt
+        E[(📊 Data Marts<br/>Fact & Dim Tables)]:::warehouse
     end
     
-    F[<img src='https://cdn.iconscout.com/icon/free/png-256/tableau-1-282698.png' width='30' align='center'/> <br/> <b>BI Tools</b> <br/> Tableau / PowerBI / SQL]:::bi
+    F[📈 BI Tools<br/>Tableau / PowerBI / SQL]:::bi
 
     %% Edges
     A -- Generates Users, Orders,<br/>Couriers, Deliveries --> B

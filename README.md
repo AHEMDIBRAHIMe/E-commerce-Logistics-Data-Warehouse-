@@ -1,4 +1,5 @@
 # E-commerce & Logistics Data Warehouse
+![Project Banner](./banner.png)
 
 هذا المشروع يبرز كيفية تصميم وبناء مستودع بيانات كامل (Data Warehouse) لتطبيق تجارة إلكترونية شامل (Super-app)، مع التركيز على العمليات اللوجستية، إدارة المبيعات، وتحليل أداء التوصيل.
 
